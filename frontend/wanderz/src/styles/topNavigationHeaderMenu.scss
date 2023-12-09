@@ -1,0 +1,62 @@
+@import "_variables.scss";
+
+.TopNavigationHeaderMenu-Nav-List {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+}
+
+.TopNavigationHeaderMenu-Nav-List-PrimaryItem {
+  margin-right: 20px;
+}
+
+.TopNavigationHeaderMenu-Nav-List-PrimaryItem:last-child {
+  margin-right: 0;
+}
+
+.TopNavigationHeaderMenu-Nav-List-PrimaryItem-Button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.TopNavigationHeaderMenu-Nav-List-PrimaryItem-ButtonLabel {
+  color: $primary-color;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  position: relative;
+  font-size: 14px;
+}
+
+.TopNavigationHeaderMenu-Nav-List-PrimaryItem-ButtonLabel:hover {
+  color: $secondary-color;
+  transition: color 0.3s ease;
+}
+
+.TopNavigationHeaderMenu-Nav-List-PrimaryItem-ButtonLabel::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: currentColor;
+  visibility: hidden;
+  transition: width 0.3s ease, visibility 0.3s ease;
+}
+
+.TopNavigationHeaderMenu-Nav-List-PrimaryItem-ButtonLabel:hover::after {
+  visibility: visible;
+  width: 100%;
+}
+
+.DropdownMenu {
+  display: none; /* initially hidden */
+}
+
+/* Example style when a menu is active */
+.TopNavigationHeaderMenu-Nav-List-PrimaryItem .DropdownMenu {
+  display: block; /* or other display styles as needed */
+  position: absolute; /* position it under the TopNavigationHeaderMenu */
+  /* Additional styling here */
+}
