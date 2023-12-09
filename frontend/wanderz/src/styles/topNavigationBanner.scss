@@ -1,0 +1,19 @@
+@import "_variables.scss";
+
+.TopNavigationBanner {
+  background-color: $primary-color;
+  min-height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.TopNavigationBanner-Content {
+  color: $primary-bg-color;
+  letter-spacing: 1px;
+  font-weight: 400;
+  font-size: 12px;
+  padding-inline-start: 10%;
+  padding-inline-end: 10%;
+  text-align: center;
+}
