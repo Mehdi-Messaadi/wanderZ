@@ -12,7 +12,15 @@ function TopNavigationHeaderMenu() {
     <div className="TopNavigationHeaderMenu">
       <nav className="TopNavigationHeaderMenu-Nav-Desktop">
         <ul className="TopNavigationHeaderMenu-Nav-List">
-          {["MEN", "WOMEN", "KIDS", "SOCKS", "GIFTS"].map((menuName) => (
+          {[
+            "MEN",
+            "WOMEN",
+            "KIDS",
+            "SOCKS",
+            "GIFTS",
+            "SUSTAINABILITY",
+            "RERUN",
+          ].map((menuName) => (
             <li
               className="TopNavigationHeaderMenu-Nav-List-PrimaryItem"
               key={menuName}
@@ -29,9 +37,6 @@ function TopNavigationHeaderMenu() {
                   </div>
                 </button>
               </div>
-              {activeMenu === menuName && (
-                <div className="DropdownMenu">aaaaaaaaaaaaaaaaaaaaaaaaa</div>
-              )}
             </li>
           ))}
         </ul>

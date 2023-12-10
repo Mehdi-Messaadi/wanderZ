@@ -196,6 +196,40 @@ function getGraphQLTypes()
         ],
     ]);
 
+    $subCategoryType = new ObjectType([
+        'name' => 'SubCategory',
+        'fields' => [
+            'title' => [
+                'type' => Type::string(),
+                'description' => 'Title of the subcategory group',
+            ],
+            'subcategories' => [
+                'type' => Type::listOf(Type::string()),
+                'description' => 'List of subcategories',
+            ],
+        ],
+    ]);
+
+    $categoryType = new ObjectType([
+        'name' => 'Category',
+        'fields' => [
+            'category_id' => [
+                'type' => Type::int(),
+                'description' => 'Unique identifier for the category',
+            ],
+            'category_title' => [
+                'type' => Type::string(),
+                'description' => 'Title of the category',
+            ],
+            'subcategories' => [
+                'type' => Type::listOf($subCategoryType),
+                'description' => 'List of subcategory groups for the category',
+                'resolve' => function ($category) {
+                    return json_decode($category['subcategories'], true);
+                },
+            ],
+        ],
+    ]);
 
     $queryType = new ObjectType([
         'name' => 'Query',
@@ -226,6 +260,16 @@ function getGraphQLTypes()
                     $users = new Users('localhost', 'root', 'mehdiPMA', 'wanderz');
                     return $users->getUserByID($args['user_id']);
                 }
+            ],
+            'categoryByTitle' => [
+                'type' => $categoryType,
+                'args' => [
+                    'title' => Type::nonNull(Type::string()),
+                ],
+                'resolve' => function ($root, $args) {
+                    $categories = new Categories('localhost', 'root', 'mehdiPMA', 'wanderz');
+                    return $categories->getCategoryByTitle($args['title']);
+                },
             ],
             'reviewById' => [
                 'type' => $reviewType,
@@ -357,6 +401,7 @@ function getGraphQLTypes()
     return [
         'productType' => $productType,
         'featureType' => $featureType,
+        'categoryType' => $categoryType,
         'queryType' => $queryType,
         'reviewType' => $reviewType,
         'mutationType' => $mutationType,
