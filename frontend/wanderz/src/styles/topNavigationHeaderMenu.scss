@@ -1,39 +1,50 @@
 @import "_variables.scss";
 
-.TopNavigationHeaderMenu-Nav-List {
+.TopNavigationHeaderMenu-Desktop {
+  height: 60px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  box-shadow: 0px 15px 25px rgba(228, 228, 228, 0.308);
+  z-index: 10;
+  position: relative;
+}
+
+.TopNavigationHeaderMenu-Desktop-Nav-List {
   display: flex;
   justify-content: space-between;
   list-style-type: none;
 }
 
-.TopNavigationHeaderMenu-Nav-List-PrimaryItem {
+.TopNavigationHeaderMenu-Desktop-Nav-List-PrimaryItem {
   margin-right: 20px;
 }
 
-.TopNavigationHeaderMenu-Nav-List-PrimaryItem:last-child {
+.TopNavigationHeaderMenu-Desktop-Nav-List-PrimaryItem:last-child {
   margin-right: 0;
 }
 
-.TopNavigationHeaderMenu-Nav-List-PrimaryItem-Button {
+.TopNavigationHeaderMenu-Desktop-Nav-List-PrimaryItem-Button {
   background-color: transparent;
   border: none;
   cursor: pointer;
 }
 
-.TopNavigationHeaderMenu-Nav-List-PrimaryItem-ButtonLabel {
+.TopNavigationHeaderMenu-Desktop-Nav-List-PrimaryItem-ButtonLabel {
   color: $primary-color;
   font-weight: 700;
   letter-spacing: 1.4px;
   position: relative;
   font-size: 14px;
+  text-transform: uppercase;
 }
 
-.TopNavigationHeaderMenu-Nav-List-PrimaryItem-ButtonLabel:hover {
+.TopNavigationHeaderMenu-Desktop-Nav-List-PrimaryItem-ButtonLabel:hover {
   color: $secondary-color;
   transition: color 0.3s ease;
 }
 
-.TopNavigationHeaderMenu-Nav-List-PrimaryItem-ButtonLabel::after {
+.TopNavigationHeaderMenu-Desktop-Nav-List-PrimaryItem-ButtonLabel::after {
   content: "";
   position: absolute;
   width: 0;
@@ -45,18 +56,85 @@
   transition: width 0.3s ease, visibility 0.3s ease;
 }
 
-.TopNavigationHeaderMenu-Nav-List-PrimaryItem-ButtonLabel:hover::after {
+.TopNavigationHeaderMenu-Desktop-Nav-List-PrimaryItem-ButtonLabel:hover::after {
   visibility: visible;
   width: 100%;
 }
 
-.DropdownMenu {
-  display: none; /* initially hidden */
+.TopNavigationHeaderMenuContainer {
+  width: 100%;
 }
 
-/* Example style when a menu is active */
-.TopNavigationHeaderMenu-Nav-List-PrimaryItem .DropdownMenu {
-  display: block; /* or other display styles as needed */
-  position: absolute; /* position it under the TopNavigationHeaderMenu */
-  /* Additional styling here */
+.TopNavigationHeaderMenu-Desktop-Drawer {
+  background-color: $secondary-bg-color;
+  display: flex;
+  justify-content: flex-start;
+  z-index: 1;
+}
+
+.TopNavigationHeaderMenu-Desktop-Drawer-List {
+  display: flex; // Make this a flex container
+  flex-direction: row; // Align children (list items) in a row
+  list-style: none; // Remove default list styling
+  padding-block-end: 50px;
+  margin: 0; // Remove default margin
+  justify-content: flex-start; // Align children to the start of the container
+  align-items: flex-start; // Align children to the top of the container
+}
+
+.TopNavigationHeaderMenu-Desktop-Drawer-List:first-child {
+  margin-left: 100px;
+  margin-top: 50px;
+}
+
+.TopNavigationHeaderMenu-Desktop-Drawer-List-Item {
+  display: flex; // Make each list item a flex container
+  flex-direction: column; // Arrange contents (title and subcategories) in a column
+  margin-right: 50px; // Space between each column
+}
+.TopNavigationHeaderMenu-Desktop-Drawer-List-Item-Title {
+  color: $primary-color;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 1.4px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.TopNavigationHeaderMenu-Desktop-Drawer-List-SubItem {
+  list-style: none; // Remove default list styling
+  padding: 0; // Remove default padding
+  margin: 0; // Remove default margin
+}
+
+.TopNavigationHeaderMenu-Desktop-Drawer-List-SubItem-Item-Link {
+  text-decoration: none;
+  color: $primary-color;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 1.4px;
+  margin-bottom: 10px;
+}
+
+.TopNavigationHeaderMenu-Desktop-Drawer-List-SubItem-Item-Link-Label {
+  position: relative; /* Needed for absolute positioning of ::after */
+  display: inline-block; /* To ensure the underline fits the content width */
+}
+
+.TopNavigationHeaderMenu-Desktop-Drawer-List-SubItem-Item-Link-Label::after {
+  content: "";
+  display: block; /* Ensure it's treated as a block for width and height */
+  width: 0;
+  height: 1px;
+  position: absolute; /* Absolute positioning */
+  bottom: -5px; /* Align to the bottom of the text */
+  left: 0;
+  background-color: currentColor; /* Use the text color */
+  visibility: hidden; /* Start as hidden */
+  transition: width 0.3s ease, visibility 0.3s ease;
+}
+
+.TopNavigationHeaderMenu-Desktop-Drawer-List-SubItem-Item-Link-Label:hover::after {
+  visibility: visible;
+  width: 100%;
 }
